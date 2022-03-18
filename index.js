@@ -1,38 +1,45 @@
-let tree = Tree;
+const { ThreeSixty } = require("@material-ui/icons");
+
 function setup() {
-  tree = new Tree();
-  let n = new Node(5);
-  tree.addNode(n);
-  tree.addNode(6);
-  tree.addNode(4);
+  let tree = new Tree();
+  tree.addValue(5);
 
   console.log(tree);
 }
 
+//Tree
 function Tree() {
   this.root = null;
 }
 
-Tree.prototype.addNode = function (n) {
+Tree.prototype.addValue = function (n) {
+  let node = new Node(n);
   if (this.root === null) {
-    this.root = n;
-  } else {
-    this.root.addNode(n);
+    this.root = node;
   }
 };
 
-Node.prototype.addNode = function (n) {
-  if (n.value < this.value) {
-    this.left = n;
-  } else {
-    this.right = n;
-  }
-};
-
+//Node
 function Node(val) {
   this.value = val;
   this.left = null;
   this.right = null;
 }
+
+// Node.prototype.addNode = function (n) {
+//   if (n.value < this.value) {
+//     if (this.left === null) {
+//       this.left = n;
+//     } else {
+//       this.left.addNode(n);
+//     }
+//   } else if (n.value > this.value) {
+//     if (this.right === null) {
+//       this.right = n;
+//     } else {
+//       this.right.addNode(n);
+//     }
+//   }
+// };
 
 setup();
